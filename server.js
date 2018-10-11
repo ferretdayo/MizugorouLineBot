@@ -15,6 +15,7 @@ const app = express();
 app.post('/webhook', line.middleware(config), (req, res) => { 
   console.log(config);
   console.log(req.body.events);
+  res.sendStatus(200);
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result));
