@@ -12,11 +12,12 @@ const config = {
 
 const app = express();
 
-app.post('/webhook', line.middleware(config), (req, res) => {
-    console.log(req.body.events);
-    Promise
-      .all(req.body.events.map(handleEvent))
-      .then((result) => res.json(result));
+app.post('/webhook', line.middleware(config), (req, res) => { 
+  console.log(config);
+  console.log(req.body.events);
+  Promise
+    .all(req.body.events.map(handleEvent))
+    .then((result) => res.json(result));
 });
 
 const client = new line.Client(config);
