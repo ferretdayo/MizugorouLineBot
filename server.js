@@ -11,28 +11,38 @@ const config = {
 };
 
 const app = express();
+const client = new line.Client(config);
 
 app.post('/webhook', line.middleware(config), (req, res) => { 
   console.log(config);
   console.log(req.body.events);
   res.sendStatus(200);
-  Promise
-    .all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result));
+  // すべてのイベント処理のプロミスを格納する配列。
+  let events_processed = [];
+
+  // イベントオブジェクトを順次処理。
+  req.body.events.forEach((event) => {
+      // この処理の対象をイベントタイプがメッセージで、かつ、テキストタイプだった場合に限定。
+      if (event.type == "message" && event.message.type == "text"){
+          // ユーザーからのテキストメッセージが「こんにちは」だった場合のみ反応。
+          if (event.message.text == "こんにちは"){
+              // replyMessage()で返信し、そのプロミスをevents_processedに追加。
+              events_processed.push(client.replyMessage(event.replyToken, {
+                  type: "text",
+                  text: "これはこれは"
+              }));
+          }
+      }
+  });
+
+  // すべてのイベント処理が終了したら何個のイベントが処理されたか出力。
+  Promise.all(events_processed).then(
+      (response) => {
+          console.log(`${response.length} event(s) processed.`);
+      }
+  );
 });
 
-const client = new line.Client(config);
-
-function handleEvent(event) {
-  if (event.type !== 'message' || event.message.type !== 'text') {
-    return Promise.resolve();
-  }
-
-  return client.replyMessage(event.replyToken, {
-    type: 'text',
-    text: event.message.text //実際に返信の言葉を入れる箇所
-  });
-}
 
 app.listen(PORT);
 console.log(`Server running at ${PORT}`);
