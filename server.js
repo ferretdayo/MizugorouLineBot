@@ -14,8 +14,9 @@ const app = express();
 const client = new line.Client(config);
 
 app.post('/webhook', line.middleware(config), (req, res) => { 
-  console.log(config);
-  console.log(req.body.events);
+  // console.log(config);
+  console.log(req.header);
+  // console.log(req.body.events);
   res.sendStatus(200);
   // すべてのイベント処理のプロミスを格納する配列。
   let events_processed = [];
