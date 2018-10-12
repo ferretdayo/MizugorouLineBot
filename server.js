@@ -18,7 +18,7 @@ app.get('/aaa', (req, res) => {
 })
 app.post('/webhook', line.middleware(config), (req, res) => { 
   // console.log(config);
-  console.log(req.header);
+  console.log(req.headers);
   // console.log(req.body.events);
   res.sendStatus(200);
   // すべてのイベント処理のプロミスを格納する配列。
