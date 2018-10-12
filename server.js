@@ -12,7 +12,10 @@ const config = {
 
 const app = express();
 const client = new line.Client(config);
-
+app.get('/aaa', (req, res) => {
+  res.sendStatus(200);
+  console.log(req.header);
+})
 app.post('/webhook', line.middleware(config), (req, res) => { 
   // console.log(config);
   console.log(req.header);
