@@ -14,7 +14,7 @@ const app = express();
 const client = new line.Client(config);
 app.get('/aaa', (req, res) => {
   res.sendStatus(200);
-  console.log(JSON.stringify(req.header));
+  console.log(JSON.stringify(req.headers));
 })
 app.post('/webhook', line.middleware(config), (req, res) => { 
   // console.log(config);
