@@ -10,6 +10,10 @@ export default {
         format: 'json'
       }
     }).catch(e => console.log(e))
-    return res.data.results.shop
+    if (res.data.results.results_returned >= 0) {
+      return res.data.results.shop
+    } else {
+      return []
+    }
   }
 }

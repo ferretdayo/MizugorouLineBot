@@ -26,7 +26,11 @@ export default (replyToken, message) => {
     console.log("keyword: ", keyword)
     hotpepper.searchFoodShop(keyword[0])
     .then(data => {
-      return reply(replyToken, flexImageCarouselBuilder(data))
+      if (data.length >= 0) {
+        return reply(replyToken, flexImageCarouselBuilder(data))
+      } else {
+        return reply(replyToken, simpleMessage("お店が見つかりませんでした．．．"))
+      }
     })
   }
 }
