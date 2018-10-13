@@ -6,6 +6,7 @@ export default {
       params: {
         key: process.env.HOTPEPPER_API_KEY,
         keyword,
+        count: 20,
         format: 'json'
       }
     }).catch(e => console.log(e))
