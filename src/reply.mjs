@@ -23,7 +23,7 @@ export default (replyToken, message) => {
     // if (!money) {
     //   return reply(replyToken, simpleMessage(DrinkingParty.MONEY_ERROR + "\n" + DrinkingParty.TEMPLATE_ERROR))
     // }
-    hotpepper.searchFoodShop(keyword)
+    hotpepper.searchFoodShop(keyword[0])
     .then(data => {
       return reply(replyToken, flexImageCarouselBuilder(data))
     })
