@@ -24,14 +24,18 @@ export default (replyToken, message) => {
     //   return reply(replyToken, simpleMessage(DrinkingParty.MONEY_ERROR + "\n" + DrinkingParty.TEMPLATE_ERROR))
     // }
     console.log("keyword: ", keyword)
-    hotpepper.searchFoodShop(keyword[0])
-    .then(data => {
-      if (data.length > 0) {
-        return reply(replyToken, flexImageCarouselBuilder(data))
-      } else {
-        return reply(replyToken, simpleMessage("お店が見つかりませんでした．．．"))
-      }
-    })
+    try {
+      hotpepper.searchFoodShop(keyword[0])
+      .then(data => {
+        if (data.length > 0) {
+          return reply(replyToken, flexImageCarouselBuilder(data))
+        } else {
+          return reply(replyToken, simpleMessage("お店が見つかりませんでした．．．"))
+        }
+      })
+    } catch (error) {
+      return reply(replyToken, simpleMessage("内部的なエラーが発生しました．"));
+    }
   }
 }
 
