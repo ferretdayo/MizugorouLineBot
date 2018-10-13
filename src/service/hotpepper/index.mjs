@@ -9,20 +9,6 @@ export default {
         format: 'json'
       }
     }).catch(e => console.log(e))
-    console.log("API FIN")
-    return parseForImageCarousel(res.data.results.shop)
+    return res.data.results.shop
   }
-}
-
-function parseForImageCarousel(list) {
-  return list.map(value => {
-    return {
-      imageUrl: value.photo.mobile.l,
-      action: {
-        type: 'uri',
-        label: '詳細に見る',
-        uri: value.urls.pc
-      }
-    }
-  })
 }
