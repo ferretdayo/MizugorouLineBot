@@ -2,6 +2,7 @@ import { http } from '../http'
 
 export default {
   searchFoodShop: async(keyword) => {
+    console.log("keyword", keyword)
     const res = await http.get('http://webservice.recruit.co.jp/hotpepper/gourmet/v1', {
       params: {
         key: process.env.HOTPEPPER_API_KEY,

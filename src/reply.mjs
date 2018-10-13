@@ -23,7 +23,6 @@ export default (replyToken, message) => {
     // if (!money) {
     //   return reply(replyToken, simpleMessage(DrinkingParty.MONEY_ERROR + "\n" + DrinkingParty.TEMPLATE_ERROR))
     // }
-    console.log("keyword: ", keyword)
     try {
       hotpepper.searchFoodShop(keyword[0])
       .then(data => {
