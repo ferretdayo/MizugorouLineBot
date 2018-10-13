@@ -23,7 +23,7 @@ export default (replyToken, message) => {
     // if (!money) {
     //   return reply(replyToken, simpleMessage(DrinkingParty.MONEY_ERROR + "\n" + DrinkingParty.TEMPLATE_ERROR))
     // }
-    const keyword = keywordList.replace(',', ' ')
+    const keyword = keywordList[0].replace(',', ' ')
     hotpepper.searchFoodShop(keyword)
     .then(data => {
       return reply(replyToken, flexImageCarouselBuilder(data))
