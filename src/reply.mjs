@@ -14,16 +14,15 @@ export default (replyToken, message) => {
       return reply(replyToken, simpleMessage(DrinkingParty.TEMPLATE_ERROR))
     }
     const keywordText = party[0].split(/\s+/)[1]
-    const keywordList = keywordText.match(/.+(,.*)*/g)
+    const keyword = keywordText.match(/.+(,.*)*/g)
     // const moneyText = party[0].split(/\s+/)[2]
     // const money = moneyText.match(/[1-9]+[0-9]+/g)
-    if (!keywordList) {
+    if (!keyword) {
       return reply(replyToken, simpleMessage(DrinkingParty.KEYWORD_ERROR + "\n" + DrinkingParty.TEMPLATE_ERROR))
     }
     // if (!money) {
     //   return reply(replyToken, simpleMessage(DrinkingParty.MONEY_ERROR + "\n" + DrinkingParty.TEMPLATE_ERROR))
     // }
-    const keyword = keywordList[0].replace(',', ' ')
     hotpepper.searchFoodShop(keyword)
     .then(data => {
       return reply(replyToken, flexImageCarouselBuilder(data))
