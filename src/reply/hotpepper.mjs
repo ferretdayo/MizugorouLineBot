@@ -13,8 +13,7 @@ export default (replyToken, message) => {
   if (!party) {
     return reply(replyToken, simpleMessage(DrinkingParty.TEMPLATE_ERROR))
   }
-
-  const keywordText = party[0].split(/\s+/)[1]
+  const keywordText = party[0].replace('/飲み会', '').trim().replace(/\s+/g, ",")
   const keyword = keywordText.match(/.+(,.*)*/g)
   if (!keyword) {
     return reply(replyToken, simpleMessage(DrinkingParty.KEYWORD_ERROR + "\n" + DrinkingParty.TEMPLATE_ERROR))

@@ -7,9 +7,8 @@ import config from './src/config'
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-app.post('/webhook', line.middleware(config), (req, res) => { 
-  // console.log(config);
-  // console.log(req.body.events);
+app.post('/webhook', line.middleware(config), (req, res) => {
+  console.log(req.body.events);
 
   res.sendStatus(200);
 
