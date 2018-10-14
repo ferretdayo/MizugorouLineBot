@@ -12,3 +12,4 @@
   - Google Spreadsheetに書かれたユーザのリストから，本日誕生日のユーザをお祝いしてくれる機能．
   - プログラムはここではなく，Google Apps Scriptに記述されている．
 ![https://user-images.githubusercontent.com/5894431/46914488-7609b280-cfd9-11e8-93a1-f74578a9579e.png](https://user-images.githubusercontent.com/5894431/46914488-7609b280-cfd9-11e8-93a1-f74578a9579e.png)
+![https://user-images.githubusercontent.com/5894431/46917403-c563d900-d001-11e8-8873-2b87eed25f12.png](https://user-images.githubusercontent.com/5894431/46917403-c563d900-d001-11e8-8873-2b87eed25f12.png)
